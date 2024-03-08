@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://portal.stratacache.com/plugins/Image_List.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Image List</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="./Image List_files/all.min.css" rel="stylesheet" type="text/css">
+    <link href="./Image List_files/css" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="./Image List_files/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .thumb {
+            max-width: 200px;
+			max-height: 200px;
+			width: auto;
+			height: auto;
+        }
+
+        img {
+			width: auto;
+			height: auto;
+			max-width: 1500px;
+			max-height: 1500px;
+			display: block;
+        }
+
+        td {
+            padding: 0 5px;
+        }
+		.imagerow {
+			height:160px
+		}
+		.hiddenEmail {
+			display:none
+		}
+		.fa-envelope-open-text{
+			color:red
+		}
+		.fa-envelope{
+			color:blue
+		}
+		.bordered {
+			border-color: grey;
+			background-color: #F3F3F3;
+			border-style: solid;
+			border-width: 3px;
+		}
+		.mailText{
+			background-color: #FAFAF0;
+		}
+		.rotate-0 {
+			-moz-transform: rotate(0deg);
+			-webkit-transform: rotate(0deg);
+			-o-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+		}
+		.rotate-90 {
+			transform-origin: top left;
+			-moz-transform: rotate(90deg) translateY(-100%);
+			-webkit-transform: rotate(90deg) translateY(-100%);
+			-o-transform: rotate(90deg) translateY(-100%);
+			-ms-transform: rotate(90deg) translateY(-100%);
+		}
+		.rotate-180 {
+			-moz-transform: rotate(180deg);
+			-webkit-transform: rotate(180deg);
+			-o-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+		}
+		.rotate-270 {
+			transform-origin: top left;
+			-moz-transform: rotate(270deg) translateX(-100%);
+			-webkit-transform: rotate(270deg) translateX(-100%);
+			-o-transform: rotate(270deg) translateX(-100%);
+			-ms-transform: rotate(270deg) translateX(-100%);
+		}
+		.cRotate {
+			position: relative;
+			top: 0;
+			left: 0;
+			color: white;
+			padding: 0;
+			border: none;
+			background: none;
+			text-shadow: 1px 1px 6px black;
+		}
+		.wRotate {
+			position: relative;
+			top: 0;
+			left: 0;
+			color: white;
+			padding: 0;
+			border: none;
+			background: none;
+			text-shadow: 1px 1px 6px black;
+		}
+		div.arrowContainer {
+			position: absolute;
+			z-index: 2;
+		}
+        .loader,
+        .loader:before,
+        .loader:after {
+            background: #c0c0c0;
+            -webkit-animation: load1 1s infinite ease-in-out;
+            animation: load1 1s infinite ease-in-out;
+            width: 1em;
+            height: 4em;
+        }
+
+        .loader {
+            color: #c0c0c0;
+            text-indent: -9999em;
+            margin: 88px auto;
+            position: relative;
+            font-size: 11px;
+            -webkit-transform: translateZ(0);
+            -ms-transform: translateZ(0);
+            transform: translateZ(0);
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+        }
+
+        .loader:before,
+        .loader:after {
+            position: absolute;
+            top: 0;
+            content: '';
+        }
+
+        .loader:before {
+            left: -1.5em;
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        .loader:after {
+            left: 1.5em;
+        }
+
+        @-webkit-keyframes load1 {
+
+            0%,
+            80%,
+            100% {
+                box-shadow: 0 0;
+                height: 4em;
+            }
+
+            40% {
+                box-shadow: 0 -2em;
+                height: 5em;
+            }
+        }
+
+        @keyframes load1 {
+
+            0%,
+            80%,
+            100% {
+                box-shadow: 0 0;
+                height: 4em;
+            }
+
+            40% {
+                box-shadow: 0 -2em;
+                height: 5em;
+            }
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.addEventListener("message", receiveMessage, false);
+
+        var index = 0;
+		var msgCount = 0;
+		var msgExpected = 99;
+		/*
+	function changeStylesheetRule(stylesheet, selector, property, value) {
+		// Make the strings lowercase
+		selector = selector.toLowerCase();
+		property = property.toLowerCase();
+		value = value.toLowerCase();
+		console.log(styleSheet);
+		console.log(value);
+    
+		// Change it if it exists
+		for(var i = 0; i < stylesheet.cssRules.length; i++) {
+			var rule = stylesheet.cssRules[i];
+			if(rule.selectorText === selector) {
+				rule.style[property] = value;
+				return;
+			}
+		}
+  
+		// Add it if it does not
+		stylesheet.insertRule(selector + " { " + property + ": " + value + "; }", 0);
+	}
+		function setupStyles(target){
+		let targetBox = document.getElementById(target).getBoundingClientRect();
+		let targetPID = document.getElementById(target).parentNode.id;
+			changeStylesheetRule(stylesheet, '.' + targetPID +'a', 'height',targetBox.width + 'px')
+			changeStylesheetRule(stylesheet, '.' + targetPID +'a', 'width',targetBox.height + 'px')
+		}
+		*/
+		function toggleThumb(target) {
+			target = document.getElementById(target);
+			//console.log(target);
+			let container = target.parentNode;
+			//console.log(container);
+			target.classList.toggle('thumb');
+			container.style.width = target.getBoundingClientRect().width + 'px';
+			container.style.height = target.getBoundingClientRect().height + 'px';
+			console.log('toggle thumbnail');
+		}
+		function rotateClockwise(target) {
+			target = document.getElementById(target);
+			let container =target.parentNode;
+			let containerID=container.id;
+			let targetClass = target.className;
+			try{
+				//console.log('try');
+				targetClass = target.className.match(/rotate-\w*/)[0];
+			}
+			catch(err){
+				//console.log('catch')
+				targetClass = 0;
+			}
+			//console.log(targetClass);
+
+		    switch (targetClass) {
+                case 'rotate-0':
+					console.log('clockwise, rotate-0');
+                    target.classList.toggle('rotate-0');
+                    target.classList.toggle('rotate-90');
+                    break;
+                case 'rotate-90':
+					console.log('clockwise, rotate-90');
+                    target.classList.toggle('rotate-90');
+                    target.classList.toggle('rotate-180');
+                    break;
+                case 'rotate-180':
+					console.log('clockwise, rotate-180');
+                    target.classList.toggle('rotate-180');
+                    target.classList.toggle('rotate-270');
+                    break;
+				case 'rotate-270':
+					console.log('clockwise, rotate-270');
+                    target.classList.toggle('rotate-270');
+                    target.classList.toggle('rotate-0');
+                    break;
+                default:
+					console.log('clockwise, default');
+                    target.classList.toggle('rotate-90');
+                    break;
+            }
+					container.style.width = target.getBoundingClientRect().width + 'px';
+					container.style.height = target.getBoundingClientRect().height + 'px';
+		}
+		function rotateWiddershins(target) {
+			target = document.getElementById(target);
+			let container =target.parentNode;
+			let containerID=container.id;
+			let targetClass = target.className;
+			try{
+				//console.log('try');
+				targetClass = target.className.match(/rotate-\w*/)[0];
+			}
+			catch(err){
+				//console.log('catch')
+				targetClass = 0;
+			}
+			//console.log(targetClass);
+			
+		    switch (targetClass) {
+                case 'rotate-0':
+					console.log('widdershins, rotate-0');
+                    target.classList.toggle('rotate-0');
+                    target.classList.toggle('rotate-270');
+                    break;
+                case 'rotate-90':
+					console.log('widdershins, rotate-90');
+                    target.classList.toggle('rotate-90');
+                    target.classList.toggle('rotate-0');
+                    break;
+                case 'rotate-180':
+					console.log('widdershins, rotate-180');
+                    target.classList.toggle('rotate-180');
+                    target.classList.toggle('rotate-90');
+                    break;
+				case 'rotate-270':
+					console.log('widdershins, rotate-270');
+                    target.classList.toggle('rotate-270');
+                    target.classList.toggle('rotate-180');
+                    break;
+                default:
+					console.log('widdershins, default');
+                    target.classList.toggle('rotate-270');
+                    break;
+            }
+			container.style.width = target.getBoundingClientRect().width + 'px';
+			container.style.height = target.getBoundingClientRect().height + 'px';
+		}
+
+        function receiveMessage(event) {
+            if (/support.stratacache.com/.test(event.origin)) {
+                switch (event.data.type) {
+                    case 'header':
+                        document.getElementById('placeholder').style.display = 'none';
+                        document.getElementById('footer').style.display = 'block';
+                        var parent = event.data.parent;
+                        var htmlString = event.data.htmlString;
+                        document.getElementById(parent).insertAdjacentHTML('beforeend', htmlString);
+						msgExpected = event.data.amount;
+                        break; 
+                    case 'data':
+                        var parent = event.data.parent;
+                        var htmlString = event.data.htmlString;
+                        document.getElementById(parent).insertAdjacentHTML('beforeend', htmlString);
+                        try {
+                            document.getElementById(event.data.loader).style.display = "none";
+                        } catch (err) {
+                            //nothing
+                        }
+                        break;
+                    case 'layout':
+                        var parent = event.data.parent;
+                        var htmlString = event.data.htmlString;
+                        document.getElementById(parent).insertAdjacentHTML('beforeend', htmlString);
+                        break;
+					case 'pagename':
+                        document.title=event.data.title;
+                        break;
+					case 'finished':
+						break;
+                    default:
+                        console.log('unrecognized message type:');
+                        console.log(event.data);
+                }
+				/*
+				msgCount++;	
+				if (msgCount>=msgExpected){
+						 console.log('page finished')
+						const stylesheet = new CSSStyleSheet();
+						let images = document.getElementsByTagName('img');
+						 console.log(images);
+						 console.log(images.length);
+						for(let i=0; i < images.length; i++){
+						 console.log('loop: ' + i);
+							setupStyles(images[i]);
+						}
+						document.adoptedStyleSheets = [stylesheet];
+				}
+				*/
+            } else {
+                console.log('rejected message:');
+                console.log(event);
+            }
+        }
+            </script>
+</head>
+<body><div name="anchor" id="anchor">
+    <div id="placeholder">
+        <div style="height: 200px">
+            <div class="loader">Loading...</div>
+        </div>
+        <div>
+            <p style="text-align: center">Please be patient, depending on the size of the ticket and your available memory, it may take 20+ seconds to load this page.</p>
+			<p style="text-align: center">Chrome slows down javascript in non-active tabs.  If this page fails to load, try tabbing back to the ticket for a few seconds.</p>
+        </div>
+    </div>
+</div>
+<div id="footer" style="display:none">
+    <p>Click on the header of each email to display the text of the email.</p>
+    <p>If files are downloading instead of opening in new tabs or vice versa - that's a browser setting.
+        Here's how you can set that up in <a target="_blank" href="http://www.presentermedia.com/blog/2013/10/my-file-automatically-opens-instead-of-saving-with-chrome/">Chrome</a>
+        and <a target="_blank" href="https://support.mozilla.org/en-US/kb/change-firefox-behavior-when-open-file#w_changing-download-actions">Firefox</a>.</p>
+    <hr>
+    <p>This script is maintained by Andrew Brower. If you find any issues, please contact me via RocketChat, or at <a target="_blank" href="mailto:abrower@stratacache.com">abrower@stratacache.com</a>.  Please include the ticket number and what browser you're using.</p>
+</div>
+<span style="margin: 0px auto; position: absolute; z-index: 2147483647; visibility: hidden; left: 566px; width: 0px; top: 46px; height: 0px;"></span><span style="z-index: 2147483647; position: absolute; visibility: hidden; left: 551px; width: 50px; top: 31px; height: 20px; font-size: 10px; color: black;"></span></body></html>
